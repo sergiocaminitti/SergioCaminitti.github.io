@@ -1,55 +1,246 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Início - John Doe, Programador</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sérgio Caminitti | Desenvolvedor de Software</title>
+<meta name="description" content="Desenvolvedor de software em Batatais, SP, com experiência em Ruby on Rails, React Native e TypeScript. Projetos, contato e currículo.">
+<meta property="og:title" content="Sérgio Caminitti | Desenvolvedor de Software">
+<meta property="og:description" content="Ruby on Rails, React Native e TypeScript. Projetos, contato e currículo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: uma coluna estreita, tipo documento técnico. Projetos em lista com filetes, sem cartões. */
+  :root {
+    --bg: #f7f7f4;
+    --fg: #1d2421;
+    --muted: #5d6762;
+    --line: #dcdfd9;
+    --accent: #0f6b57;
+    --accent-fg: #ffffff;
+    --tag-bg: #e8ece7;
+    --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121715;
+      --fg: #e6ebe8;
+      --muted: #9aa5a0;
+      --line: #2a332f;
+      --accent: #4fc3a1;
+      --accent-fg: #0c1311;
+      --tag-bg: #1d2623;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 20px 72px;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-  <body>
-    <header>
-      <div>
-        <div class="logo">John Doe</div>
-        <div class="title">Programador Web Full Stack</div>
-      </div>
-      <nav>
-        <a href="/index.html" class="nav-link">Início</a>
-        <a href="/sobre.html" class="nav-link">Sobre Mim</a>
-        <a href="/contato.html" class="nav-link">Contato</a>
-      </nav>
-      <div></div>
-    </header>
-    <div class="container">
-      <section>
-        <h1>John Doe, Programador</h1>
-        <p>
-          Sou um programador web full stack apaixonado por desenvolvimento de
-          software e tecnologia. Tenho experiência com várias tecnologias web
-          modernas, incluindo HTML, CSS, JavaScript, Ruby on Rails e PostgreSQL.
-        </p>
-      </section>
+  header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .role { margin: 10px 0 0; font-size: 1.125rem; color: var(--muted); }
+  .intro { margin: 24px 0 0; max-width: 62ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none; }
+  .btn {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--fg);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .btn.primary:hover { color: var(--accent-fg); filter: brightness(1.08); }
 
-      <section>
-        <a href="/sobre.html" class="call-to-action">Saiba Mais</a>
-        <a href="/contato.html" class="call-to-action">Entre em Contato</a>
-      </section>
+  section { margin-top: 56px; }
+  h2 {
+    margin: 0 0 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .project { padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .project:first-of-type { padding-top: 0; }
+  .project:last-of-type { border-bottom: 0; }
+  .project h3 { margin: 0; font-size: 1.125rem; letter-spacing: -0.01em; }
+  .project .kind { margin: 2px 0 0; color: var(--muted); font-size: 0.9rem; }
+  .project p { margin: 10px 0 0; max-width: 64ch; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+  .tags li {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    background: var(--tag-bg);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .links { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 0.95rem; }
+  .note { color: var(--muted); font-size: 0.9rem; }
 
-      <section class="skills">
-        <h2>Habilidades</h2>
-        <ul>
-          <li>HTML, CSS e JavaScript</li>
-          <li>React e Next.js</li>
-          <li>Ruby on Rails</li>
-          <li>PostgreSQL, MongoDB e Redis</li>
-          <li>Versionamento de código com Git</li>
-          <li>Experiência em desenvolvimento ágil (Scrum)</li>
-        </ul>
-      </section>
-    </div>
-    <footer>
-      <p>&copy; 2024 John Doe. Todos os direitos reservados.</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+  .others { margin: 0; padding: 0; list-style: none; }
+  .others li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .others li:last-child { border-bottom: 0; }
+  .others strong { font-weight: 600; }
+
+  dl { margin: 0; display: grid; grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr); gap: 8px 16px; }
+  dt { color: var(--muted); font-size: 0.9rem; padding-top: 1px; }
+  dd { margin: 0; }
+  @media (max-width: 520px) { dl { grid-template-columns: 1fr; gap: 0; } dd { margin-bottom: 12px; } }
+
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sérgio Caminitti</h1>
+    <p class="role">Desenvolvedor de Software · Ruby on Rails &amp; React Native</p>
+    <p class="intro">
+      Tenho mais de 1 ano de experiência profissional na TrailDev, com back-end em Ruby on Rails e
+      mobile em React Native e TypeScript. Sou bacharel em Ciência da Computação (Barão de Mauá, 2026).
+      Busco uma vaga de desenvolvedor júnior (back-end, mobile ou full stack), remota ou presencial/híbrida
+      em Batatais e região.
+    </p>
+    <ul class="actions">
+      <li><a class="btn primary" href="curriculo.pdf">Baixar currículo (PDF)</a></li>
+      <li><a class="btn" href="https://www.linkedin.com/in/sergiocaminitti/">LinkedIn</a></li>
+      <li><a class="btn" href="https://github.com/sergiocaminitti">GitHub</a></li>
+      <li><a class="btn" href="mailto:sergiocaminitti@gmail.com">sergiocaminitti@gmail.com</a></li>
+    </ul>
+  </header>
+
+  <section id="projetos" aria-labelledby="h-projetos">
+    <h2 id="h-projetos">Projetos</h2>
+
+    <article class="project">
+      <h3>Max Connect (Termomax)</h3>
+      <p class="kind">App mobile sob encomenda · desenvolvido na TrailDev</p>
+      <p>
+        Aplicativo para controlar dispositivos da empresa Termomax por meio do Tuya SDK, publicado na
+        App Store e no Google Play. Participei de todas as etapas, com foco nas telas e na integração
+        com o SDK.
+      </p>
+      <ul class="tags" aria-label="Tecnologias"><li>React Native</li><li>TypeScript</li><li>Tuya SDK</li></ul>
+      <p class="links">
+        <a href="https://apps.apple.com/br/app/max-connect/id6760918226">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=br.com.termomax">Google Play</a>
+        <span class="note">Código privado (cliente)</span>
+      </p>
+    </article>
+
+    <article class="project">
+      <h3>Trailbot</h3>
+      <p class="kind">Plataforma de atendimento multicanal · TrailDev</p>
+      <p>
+        Reúne vários canais, como o WhatsApp, em um único chat, com bots personalizáveis. Atuei como
+        full stack: modelagem do banco de dados, arquitetura, front-end e APIs, com autenticação
+        multi-tenant e perfis de agente, supervisor e administrador.
+      </p>
+      <ul class="tags" aria-label="Tecnologias"><li>Ruby on Rails 8</li><li>Devise</li><li>Turbo</li><li>Webhooks (WAHA API)</li></ul>
+      <p class="links"><span class="note">Código privado (TrailDev). O site foi retirado do ar pela empresa.</span></p>
+    </article>
+
+    <article class="project">
+      <h3>Transcrição de documentos trabalhistas</h3>
+      <p class="kind">Desafio técnico da Quick Filler</p>
+      <p>
+        Aplicação web publicada que transcreve cartões de ponto e holerites em PDF, com OCR para os
+        documentos escaneados, tela de revisão editável e exportação em .xlsx, .csv e .json.
+        Tem 20 testes automatizados e deploy com Docker. Foi feita com apoio de um assistente de IA, e
+        o processo, incluindo o que precisei corrigir, está documentado no repositório.
+      </p>
+      <ul class="tags" aria-label="Tecnologias"><li>TypeScript</li><li>Node.js</li><li>React</li><li>Tesseract OCR</li><li>Docker</li></ul>
+      <p class="links">
+        <a href="https://github.com/sergiocaminitti/desafio-programador">Código no GitHub</a>
+        <a href="https://desafio-programador-8lr6.onrender.com/">Aplicação no ar</a>
+        <a href="https://github.com/sergiocaminitti/desafio-programador/blob/main/PROCESSO.md">Como conduzi o projeto</a>
+      </p>
+    </article>
+
+    <article class="project">
+      <h3>Kombino</h3>
+      <p class="kind">Front-end mobile · freelance, em equipe de três desenvolvedores</p>
+      <p>
+        App de avaliação e ranking de prestadores de serviços locais. Implementei telas, navegação,
+        componentes e consumo de APIs REST e, por ter experiência prévia com React Native, apoiei a
+        equipe em boas práticas e organização dos componentes. O app ainda não foi lançado.
+      </p>
+      <ul class="tags" aria-label="Tecnologias"><li>React Native</li><li>REST</li></ul>
+      <p class="links"><a href="https://kombino.app/">Página do projeto</a></p>
+    </article>
+  </section>
+
+  <section id="outros" aria-labelledby="h-outros">
+    <h2 id="h-outros">Outros trabalhos</h2>
+    <ul class="others">
+      <li>
+        <strong>Agenda Telefônica</strong>: teste prático em React, TypeScript e Firebase, com cadastro,
+        pesquisa, exclusão e log de alterações.
+        <a href="https://github.com/sergiocaminitti/AgendaTelefonica">Código</a>
+      </li>
+      <li>
+        <strong>Loja virtual (projeto final de um curso de Rails)</strong>: carrinho de compras, área de
+        administrador e área do usuário.
+        <a href="https://github.com/sergiocaminitti/final">Código</a>
+      </li>
+      <li>
+        <strong>Site institucional de BPO e gestão financeira</strong>: site que desenvolvi para um amigo.
+        <a href="https://tngestao.com.br/">Ver o site</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="stack" aria-labelledby="h-stack">
+    <h2 id="h-stack">Tecnologias</h2>
+    <dl>
+      <dt>Linguagens</dt><dd>Ruby, JavaScript, TypeScript, SQL, HTML, CSS</dd>
+      <dt>Frameworks</dt><dd>Ruby on Rails, React Native, Hotwire (Turbo), Devise</dd>
+      <dt>Dados e integrações</dt><dd>PostgreSQL, APIs REST, webhooks, Tuya SDK</dd>
+      <dt>Ferramentas</dt><dd>Git, GitHub, Docker, Linux (Ubuntu)</dd>
+      <dt>Testes</dt><dd>RSpec (Rails), Jest (React Native)</dd>
+    </dl>
+  </section>
+
+  <section id="formacao" aria-labelledby="h-formacao">
+    <h2 id="h-formacao">Formação</h2>
+    <dl>
+      <dt>2022 – 2026</dt><dd>Bacharelado em Ciência da Computação, Centro Universitário Barão de Mauá (Ribeirão Preto, SP)</dd>
+      <dt>2019 – 2021</dt><dd>Técnico em Desenvolvimento de Sistemas, ETEC Antônio de Pádua Cardoso (Batatais, SP)</dd>
+    </dl>
+  </section>
+
+  <footer>Sérgio Henrique Caminitti de Lima · Batatais, SP</footer>
+</main>
+</body>
 </html>
